@@ -95,7 +95,7 @@ metadata:
 spec:
   containers:
   - name: grafana
-    image: grafana:latest
+    image: grafana/grafana
     env:
       - name: GF_AUTH_ANONYMOUS_ORG_ROLE
         value: Admin
