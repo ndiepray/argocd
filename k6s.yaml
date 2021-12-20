@@ -51,7 +51,7 @@ metadata:
 spec:
   containers:
   - name: influxdb
-    image: influxdb:latest
+    image: influxdb
     env:
       - name: INFLUXDB_DB
         value: k6
