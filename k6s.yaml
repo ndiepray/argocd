@@ -128,9 +128,9 @@ data:            ### web 서버에 HTTP 접속 요청을 하고 응답에 대한
     import http from "k6/http";
 
     export let options = {
-        vus: 100,            ### 가상의 유저 수 -> 너무 많은 유저의 수로 테스트하면 과부하 상태에 걸려서 원만한 테스트 진행이 불가능하여 100으로 설정
-        duration: '30s',        ### 부하 지속 시간
-        batchPerHost: 5,            ### 병렬 요청 수
+        vus: 100,
+        duration: '30s',
+        batchPerHost: 5,
         insecureSkipTLSVerify: true,
         thresholds: {
           'http_req_duration{kind:html}': ['avg<=250', 'p(95)<500'],
@@ -142,7 +142,7 @@ data:            ### web 서버에 HTTP 접속 요청을 하고 응답에 대한
             check(http.get(`http://${__ENV.TARGET_HOSTNAME}:80`, {
                 tags: {'kind': 'html'},
             }), {
-                "status is 200": (res) => res.status === 200,           ### 200은 HTTP 요청이 성공했음을 나타내는 성공 응답 상태 코드
+                "status is 200": (res) => res.status === 200,
             });
         });
         sleep(1);
