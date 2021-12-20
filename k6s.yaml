@@ -160,7 +160,7 @@ spec:
         spec:
           containers:
             - name: k6
-              image: loadimpact/k6
+              image: 24hoursmedia/k6-xarch
               env:
                 - name: K6_OUT
                   value: influxdb=http://influxdb-service:8086/k6
