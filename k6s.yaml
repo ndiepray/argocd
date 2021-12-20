@@ -26,7 +26,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx:1.19.4-alpine
+        image: nginx:latest
         ports:
         - containerPort: 80
 ---
@@ -51,7 +51,7 @@ metadata:
 spec:
   containers:
   - name: influxdb
-    image: influxdb:1.8            ### Intel 서버와 ARM 서버 둘 다 지원 가능한 버전의 influxdb 컨테이너 생성
+    image: influxdb:latest
     env:
       - name: INFLUXDB_DB
         value: k6
@@ -95,7 +95,7 @@ metadata:
 spec:
   containers:
   - name: grafana
-    image: grafana/grafana:7.4.0            ### Intel 서버와 ARM 서버 둘 다 지원 가능한 버전의 grafana 컨테이너 생성
+    image: grafana:latest
     env:
       - name: GF_AUTH_ANONYMOUS_ORG_ROLE
         value: Admin
@@ -160,7 +160,7 @@ spec:
         spec:
           containers:
             - name: k6
-              image: 24hoursmedia/k6-xarch
+              image: loadimpact/k6:latest
               env:
                 - name: K6_OUT
                   value: influxdb=http://influxdb-service:8086/k6
