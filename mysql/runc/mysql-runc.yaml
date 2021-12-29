@@ -24,10 +24,17 @@ spec:
       labels:
         app: mysql
     spec:
-      # runtimeClassName: runc      
+      # runtimeClassName: runc
       containers:
       - image: mysql:5.6
         name: mysql-runc
+        resources:
+          requests:
+            cpu: "200m"
+            memory: "200Mi"
+          limits:
+            cpu: "300m"
+            memory: "300Mi"
         env:
           # Use secret in real usage
         - name: MYSQL_ROOT_PASSWORD
