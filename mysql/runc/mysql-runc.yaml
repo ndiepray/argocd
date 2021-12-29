@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-runc
+spec:
+  ports:
+  - port: 3306
+  selector:
+    app: mysql
+  clusterIP: None
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-runc
+spec:
+  selector:
+    matchLabels:
+      app: mysql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      # runtimeClassName: runc      
+      containers:
+      - image: mysql:5.6
+        name: mysql-runc
+        env:
+          # Use secret in real usage
+        - name: MYSQL_ROOT_PASSWORD
+          value: dblab528
+        ports:
+        - containerPort: 3306
+          name: mysql-runc
+        volumeMounts:
+        - name: mysql-persistent-storage-runc
+          mountPath: /var/lib/mysql
+      volumes:
+      - name: mysql-persistent-storage-runc
+        persistentVolumeClaim:
+          claimName: mysql-pv-claim-runc
