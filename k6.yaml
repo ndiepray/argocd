@@ -175,23 +175,3 @@ spec:
             - name: scripts-vol
               configMap:
                 name: k6-scripts
----
-apiVersion: apps/v1
-kind: Deployment            ### Deployment 컨트롤러를 사용하여 부하테스트를 위한 web 서버 생성
-metadata:
-  name: nginx-deployment
-spec:
-  selector:
-    matchLabels:
-      app: nginx
-  replicas: 2
-  template:
-    metadata:
-      labels:
-        app: nginx
-    spec:
-      containers:
-      - name: nginx
-        image: nginx:latest
-        ports:
-        - containerPort: 80
