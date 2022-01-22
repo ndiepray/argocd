@@ -127,7 +127,7 @@ data:            ### web 서버에 HTTP 접속 요청을 하고 응답에 대한
     import {check, sleep, group} from "k6";
     import http from "k6/http";
     export let options = {
-        vus: 100,
+        vus: 1000,
         duration: '30s',
         batchPerHost: 5,
         insecureSkipTLSVerify: true,
@@ -175,3 +175,23 @@ spec:
             - name: scripts-vol
               configMap:
                 name: k6-scripts
+---
+apiVersion: apps/v1
+kind: Deployment            ### Deployment 컨트롤러를 사용하여 부하테스트를 위한 web 서버 생성
+metadata:
+  name: nginx-deployment
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
