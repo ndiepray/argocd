@@ -127,7 +127,7 @@ data:            ### web 서버에 HTTP 접속 요청을 하고 응답에 대한
     import {check, sleep, group} from "k6";
     import http from "k6/http";
     export let options = {
-        vus: 1000,
+        vus: 100,
         duration: '30s',
         batchPerHost: 5,
         insecureSkipTLSVerify: true,
