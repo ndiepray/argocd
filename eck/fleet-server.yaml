@@ -61,5 +61,4 @@ subjects:
 roleRef:
   kind: ClusterRole
   name: elastic-agent
-  namespace: eck
   apiGroup: rbac.authorization.k8s.io

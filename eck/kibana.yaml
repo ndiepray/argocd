@@ -8,9 +8,16 @@ spec:
   count: 1
   elasticsearchRef:
     name: demo
+  transport:
+    service:
+      metadata:
+        labels:
+          my-custom: label
+      spec:
+        type: LoadBalancer
   config:
-    xpack.fleet.agents.elasticsearch.hosts: ["https://elasticsearch-es-http.demo.svc:9200"]
-    xpack.fleet.agents.fleet_server.hosts: ["https://fleet-server-agent-http.demo.svc:8220"]
+    xpack.fleet.agents.elasticsearch.hosts: ["https://demo-es-http.demo.svc:9200"]
+    xpack.fleet.agents.fleet_server.hosts: ["https://demo-agent-http.demo.svc:8220"]
     xpack.fleet.packages:
     - name: system
       version: latest
