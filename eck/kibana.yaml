@@ -8,13 +8,10 @@ spec:
   count: 1
   elasticsearchRef:
     name: demo
-  transport:
+  https:
     service:
-      metadata:
-        labels:
-          my-custom: label
       spec:
-        type: LoadBalancer
+        type: LoadBalancer # default is ClusterIP
   config:
     xpack.fleet.agents.elasticsearch.hosts: ["https://demo-es-http.demo.svc:9200"]
     xpack.fleet.agents.fleet_server.hosts: ["https://demo-agent-http.demo.svc:8220"]
