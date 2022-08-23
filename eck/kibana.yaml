@@ -8,7 +8,7 @@ spec:
   count: 1
   elasticsearchRef:
     name: demo
-  https:
+  http:
     service:
       spec:
         type: LoadBalancer # default is ClusterIP
