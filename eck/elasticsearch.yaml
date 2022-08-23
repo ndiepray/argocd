@@ -6,7 +6,7 @@ metadata:
 spec:
   version: 8.3.3
   nodeSets:
-  - name: search
+  - name: default
     count: 2
     config:
       node.store.allow_mmap: false
