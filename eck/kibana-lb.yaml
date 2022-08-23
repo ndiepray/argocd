@@ -1,17 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: demo
+  name: demo-kibana-lb
   namespace: eck
   labels:
     common.k8s.elastic.co/type: kibana
-    kibana.k8s.elastic.co/name: kibana
-  ownerReferences:
-  - apiVersion: kibana.k8s.elastic.co/v1
-    blockOwnerDeletion: true
-    controller: true
-    kind: Kibana
-    name: kibana
+    kibana.k8s.elastic.co/name: demo
 spec:
   ports:
   - name: https
@@ -20,5 +14,5 @@ spec:
     targetPort: 5601
   selector:
     common.k8s.elastic.co/type: kibana
-    kibana.k8s.elastic.co/name: kibana
+    kibana.k8s.elastic.co/name: demo
   type: LoadBalancer
