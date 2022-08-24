@@ -1,0 +1,26 @@
+apiVersion: agent.k8s.elastic.co/v1alpha1
+kind: Agent
+metadata:
+  name: demo-elastic-agent
+  namespace: eck
+spec:
+  version: 8.3.3
+  kibanaRef:
+    name: demo
+  fleetServerRef:
+    name: demo-fleet-server
+  mode: fleet
+  daemonSet:
+    podTemplate:
+      spec:
+        #containers:
+        #- name: agent
+        #  env: 
+        #  - name: KIBANA_FLEET_PASSWORD
+        #   value: 28aj11VP6WXv36U6zkWx0Tc6
+        #  - name: KIBANA_FLEET_USERNAME
+        #   value: eck-demo-fleet-server-agent-kb-user
+        serviceAccountName: elastic-agent
+        automountServiceAccountToken: true
+        securityContext:
+          runAsUser: 0

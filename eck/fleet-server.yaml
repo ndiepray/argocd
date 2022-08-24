@@ -1,7 +1,7 @@
 apiVersion: agent.k8s.elastic.co/v1alpha1
 kind: Agent
 metadata:
-  name: demo
+  name: demo-fleet-server
   namespace: eck
 spec:
   version: 8.3.3

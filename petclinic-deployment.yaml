@@ -4,12 +4,12 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: petclinic
-  namespace: default
+  namespace: eck
   labels:
     app: petclinic
     service: petclinic
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: petclinic
@@ -26,7 +26,7 @@ spec:
         emptyDir: {}
       initContainers:
       - name: elastic-java-agent
-        image: docker.elastic.co/observability/apm-agent-java:1.12.0
+        image: docker.elastic.co/observability/apm-agent-java:1.30.0
         volumeMounts:
         - mountPath: /elastic/apm/agent
           name: elastic-apm-agent
@@ -43,9 +43,11 @@ spec:
           name: elastic-apm-agent
         env:
         - name: ELASTIC_APM_SERVER_URL
-          value: "http://10.20.1.101:8200"
+          value: "https://192.168.42.134:8220"
         - name: ELASTIC_APM_SERVICE_NAME
           value: "apm-test-petclinic"
+        - name : ELASTIC_APM_SECRET_TOKEN
+          value: "6eD89pE6ze9Qd1zXm0Bk7Z00"
         - name: ELASTIC_APM_APPLICATION_PACKAGES
           value: "org.springframework.samples.petclinic"
         - name: ELASTIC_APM_ENVIRONMENT
@@ -61,7 +63,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: petclinic
-  namespace: default
+  namespace: eck
   labels:
     app: petclinic
 spec:
