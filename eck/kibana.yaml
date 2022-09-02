@@ -13,9 +13,8 @@ spec:
       spec:
         type: LoadBalancer # default is ClusterIP
   config:
-    xpack.fleet.agents.elasticsearch.hosts: ["https://demo-es-http.eck.svc:9200","https://demo-es-data"]
-    xpack.fleet.agents.elasticsearch.hosts: ["https://demo-es-http.eck.svc:9200","https://demo-es-masters.eck.svc:9200","https://demo-es-data.eck.svc:9200"]
-      xpack.fleet.agents.fleet_server.hosts: ["https://demo-fleet-server-agent-http.eck.svc:8220"]
+    xpack.fleet.agents.elasticsearch.hosts: ["https://demo-es-http.eck.svc:9200"]
+    xpack.fleet.agents.fleet_server.hosts: ["https://demo-fleet-server-agent-http.eck.svc:8220"]
     xpack.fleet.packages:
     - name: apm
       version: latest
