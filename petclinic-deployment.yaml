@@ -43,11 +43,11 @@ spec:
           name: elastic-apm-agent
         env:
         - name: ELASTIC_APM_SERVER_URL
-          value: "https://192.168.42.134:8220"
+          value: "http://localhost:8200"
         - name: ELASTIC_APM_SERVICE_NAME
           value: "apm-test-petclinic"
-        - name : ELASTIC_APM_SECRET_TOKEN
-          value: "6eD89pE6ze9Qd1zXm0Bk7Z00"
+        #- name : ELASTIC_APM_SECRET_TOKEN
+        #  value: "86Wu65meuyAfX13bFA0167EN"
         - name: ELASTIC_APM_APPLICATION_PACKAGES
           value: "org.springframework.samples.petclinic"
         - name: ELASTIC_APM_ENVIRONMENT
