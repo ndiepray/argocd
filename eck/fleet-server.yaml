@@ -24,7 +24,10 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: elastic-agent
+<<<<<<< HEAD
   #namespace: eck
+=======
+>>>>>>> 68ebeef271a140a8bc9f463fe4e9c0cde0c3fd02
 rules:
 - apiGroups: [""] # "" indicates the core API group
   resources:
